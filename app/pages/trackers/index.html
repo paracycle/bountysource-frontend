@@ -32,5 +32,5 @@
 </div>
 
 <div ng-show="$pagination && projects && projects.length > 0" style="text-align: center;">
-  <pagination on-select-page="change_page(page)" max-size="15" boundary-links="true" num-pages="$pagination.pages" current-page="$pagination.page" class="pagination"></pagination>
+  <pagination on-select-page="change_page(page)" max-size="15" boundary-links="true" total-items="$pagination.pages" page="$pagination.page" class="pagination"></pagination>
 </div>
