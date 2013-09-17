@@ -1,17 +1,17 @@
 <ul class="breadcrumb">
-  <li><a href="/">Home</a><span class="divider">»</span></li>
-  <li><a href="/people">People</a><span class="divider">»</span></li>
+  <li><a href="/">Home</a></li>
+  <li><a href="/people">People</a></li>
   <li><a ng-href="/people/{{person.slug}}">{{ person.display_name ||'Loading...' }}</a></li>
 </ul>
 
-<div class="row-fluid" ng-show="person">
-  <div class="span4">
+<div class="row" ng-show="person">
+  <div class="col-md-4">
     <div class="well">
       <ng-include src="'pages/people/partials/infobox.html'"></ng-include>
     </div>
   </div>
 
-  <div class="span8">
+  <div class="col-md-8">
     <ng-include src="'pages/people/partials/tabs.html'"></ng-include>
 
     TODO: show cards for projects this person is following

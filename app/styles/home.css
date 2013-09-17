@@ -1,7 +1,7 @@
 .homepage section#top {
   background: #444;
   text-align: center;
-  padding: 20px 0 40px 0;
+  padding: 35px 0 40px 0;
 }
 
 .homepage section#users {
@@ -23,7 +23,7 @@
 /*.homepage .well .btn { float: right; }*/
 
 .homepage section#top span span { display: none; }
-.homepage section#top span img { vertical-align: -21px; }
+.homepage section#top span img { display: inline; vertical-align: -21px; }
 
 
 /* backer/developer box (vertical white line) */

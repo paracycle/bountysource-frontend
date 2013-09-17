@@ -1,27 +1,28 @@
 <ul class="breadcrumb">
-  <li><a href="/">Home</a><span class="divider">»</span></li>
+  <li><a href="/">Home</a></li>
   <li><a>Teams</a></li>
 </ul>
 
 <h1>Teams Using Open-Source Software</h1>
 
-<div class="row-fluid">
+<div class="row">
 
-  <div class="span9">
+  <div class="col-sm-9">
     <ul class="nav nav-tabs">
       <li class="active"><a href="/teams">Popular</a></li>
       <li><a href="/teams/new">Create</a></li>
     </ul>
 
-    <ul class="thumbnails">
-      <li class="span2" ng-repeat="team in teams | filter:{ featured: true }">
+    <div class="row">
+      <div class="col-lg-3 col-sm-3" style="margin-bottom: 30px;" ng-repeat="team in teams | filter:{ featured: true }">
         <a href="/teams/{{team.slug}}" class="thumbnail text-center">
-          <img src="{{team.medium_image_url}}" /><br/>
+          <img src="{{ team.medium_image_url }}" /><br/>
           {{ team.name }}
         </a>
-      </li>
-    </ul>
+      </div>
+    </div>
+    
   </div>
 
-  <div class="span3" ng-include="'pages/teams/partials/index-side.html'"></div>
+  <div class="col-sm-3" ng-include="'pages/teams/partials/index-side.html'"></div>
 </div>

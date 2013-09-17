@@ -129,5 +129,3 @@ angular.module('app').
       return (val||"").toLowerCase().replace(/[ ]+/g,'-').replace(/[,.]/g,'').replace(/-(inc|llc)$/,'').replace(/[^a-z1-9-_]/g,'');
     };
   });
-
-

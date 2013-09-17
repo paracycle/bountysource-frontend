@@ -1,12 +1,13 @@
 <ul class="breadcrumb">
-  <li><a href="/">Home</a><span class="divider">»</span></li>
-  <li><a href="/teams">Teams</a><span class="divider">»</span></li>
+  <li><a href="/">Home</a></li>
+  <li><a href="/teams">Teams</a></li>
   <li><a>Create</a></li>
 </ul>
 
 <h1>Teams Using Open-Source Software</h1>
 
-<div class="row-fluid">
+<div class="row">
+<div class="col-md-12">
   <ul class="nav nav-tabs">
     <li><a href="/teams">Popular</a></li>
     <li class="active"><a href="/teams/new">Create</a></li>
@@ -16,14 +17,15 @@
   <br />
 
   <form class="form-horizontal" ng-submit="create_team()" ng-controller="NewTeamController">
-    <div class="alert alert-error" ng-show="error">{{error}}</div>
+    <div class="alert alert-danger" ng-show="error">{{error}}</div>
 
     <ng-include src="'pages/teams/partials/form.html'"></ng-include>
 
-    <div class="control-group">
-      <div class="controls">
-        <submit type="submit" ng-click="create_team()" class="btn btn-large btn-primary">Continue</submit>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-4">
+        <submit type="submit" ng-click="create_team()" class="btn btn-lg btn-primary">Continue</submit>
       </div>
     </div>
   </form>
+</div>
 </div>

@@ -16,15 +16,8 @@ table#solutions-table tr td img.thumbnail {
 }
 
 .bounty-buttons .btn { margin-top: 0; }
+.bounty-buttons .btn-sm { min-width: 72px; max-width: 73px; }
 .bounty-buttons .controls { margin-top: 10px; }
 .bounty-buttons .controls:first-of-type { margin-top: 0; }
 
 .no-stripe td { border-top: 0; background-color: transparent !important; }
-
-td.imagerow {
-  width: 60px;
-}
-
-td.noimagerow {
-  width: 0px;
-}

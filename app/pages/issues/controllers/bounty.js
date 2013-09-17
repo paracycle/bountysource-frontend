@@ -102,4 +102,3 @@ angular.module('app')
       }
     });
   });
-

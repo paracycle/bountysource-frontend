@@ -40,4 +40,3 @@ angular.module('app')
       if (pledge.$show_survey) { pledge.survey_response = pledge.survey_response || ""; }
     };
   });
-

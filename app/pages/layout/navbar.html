@@ -1,14 +1,21 @@
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <button type="button" class="btn btn-navbar" ng-click="isCollapsed = !isCollapsed"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-      <a class="brand" href="/" id="navbar-logo"><strong>Bountysource</strong><img src="/images/Bountysource-green.png" style="width: 100px; height: 30px" /></a>
-      <div class="nav-collapse" collapse="!isCollapsed">
-        <form class="navbar-search" ng-controller="NavbarSearchController" ng-submit="submit_search()">
-          <div class="icon-search"></div>
-          <input type="text" class="search-query" ng-model="search_query" placeholder="Issue URL, Project, Language, etc.">
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+     <div class="navbar-header">
+       <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="/" id="navbar-logo"><strong>Bountysource</strong><img src="/images/Bountysource-green.png" style="width: 100px; height: 30px"></a>
+     </div>
+     <div class="navbar-collapse collapse" collapse="isCollapsed">
+       <form class="navbar-form navbar-left" ng-controller="NavbarSearchController" ng-submit="submit_search()">
+          <div class="form-group">
+            <input type="text" class="search-query form-control" ng-model="search_query" placeholder="Issue URL, Project, Language, etc.">
+            <div ng-click="submit_search()" class="glyphicon glyphicon-search"></div>
+          </div>
         </form>
-        <ul class="nav pull-right">
+        <ul class="nav pull-right navbar-nav">
           <li><a href="http://blog.bountysource.com" target="_blank" id="navbar-blog">Blog</a></li>
           <li><a href="/teams" id="navbar-teams">Teams</a></li>
           <li><a href="/enterprise" id="navbar-teams">Enterprise</a></li>
@@ -25,36 +32,36 @@
             </ul>
 
             <a href="/people/{{current_person.slug}}" class="dropdown-toggle" data-toggle="dropdown" ng-show="!!current_person" id="navbar-user">
-              <img class="img-rounded" ng-src="{{current_person.image_url}}" style="width: 18px; height: 18px; margin-right: 5px;" />
+              <img class="img-rounded" ng-src="{{current_person.image_url}}" style="width: 23px; height: 23px; margin-right: 5px; display: inline;">
               {{current_person.display_name}}
               <b class="caret"></b>
             </a>
 
             <ul class="dropdown-menu" ng-show="!!current_person">
               <li><a href="/activity" id="navbar-user-activity">
-                <i class="icon-bullhorn"></i>
+                <i class="glyphicon glyphicon-bullhorn"></i>
                 Activity
               </a></li>
               <li><a ng-href="/people/{{current_person.slug}}" id="navbar-user-profile">
-                <i class="icon-user"></i>
+                <i class="glyphicon glyphicon-user"></i>
                 Profile
               </a></li>
               <!--<li><a href="/tools">-->
-                <!--<i class="icon-wrench"></i>-->
+                <!--<i class="glyphicon glyphicon-wrench"></i>-->
                 <!--Tools-->
               <!--</a></li>-->
               <li><a href="/settings" id="navbar-user-settings">
-                <i class="icon-cog"></i>
+                <i class="glyphicon glyphicon-cog"></i>
                 Settings
               </a></li>
               <li ng-show="current_person.account.balance > 0"><a ng-href="/activity/transactions" id="navbar-user-profile">
-                <i class="icon-gift"></i>
+                <i class="glyphicon glyphicon-gift"></i>
                 Balance ({{current_person.account.balance | currency}})
               </a></li>
 
               <li class="divider"></li>
               <li><a href="/signin" ng-click="signout()" id="navbar-user-signout">
-                <i class="icon-off"></i>
+                <i class="glyphicon glyphicon-off"></i>
                 Sign Out
               </a></li>
             </ul>
@@ -79,10 +86,10 @@
                   </div>
                   <div class="modal-body">
                     <form ng-submit="set_access_token.save()">
-                      <input ng-model="set_access_token.new_token" autofocus style="width: 98%;" type="text" placeholder="Super secret access token goes here..." />
+                      <input ng-model="set_access_token.new_token" autofocus style="width: 98%;" type="text" placeholder="Super secret access token goes here..." class="form-control">
                       <br />
                       <button type="submit" class="btn btn-primary">Steal Identity</button>
-                      <button class="btn" ng-click="set_access_token.close()">Cancel</button>
+                      <button class="btn btn-default" ng-click="set_access_token.close()">Cancel</button>
                     </form>
                   </div>
                 </div>
@@ -92,5 +99,4 @@
         </ul>
       </div>
     </div>
-  </div>
 </div>

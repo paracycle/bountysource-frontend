@@ -1,11 +1,15 @@
-<!--<div id="chatroom" ng-switch="chatroom.url" ng-controller="ChatController">-->
-  <!--<div ng-switch-when="none" class="connect">-->
-    <!--<p style="text-align: center; padding-top: 10px;">The #Bountysource IRC Chatroom is a place to communicate with other Bountysource users.</p>-->
-    <!--<form>-->
-      <!--<span>Nickname:</span>-->
-      <!--<input type="text" class="input-text input-medium" name="nick" ng-model="chatroom.nick">-->
-      <!--<button type="submit" class="btn btn-success" ng-click="chatroom.connect()">Connect</button>-->
-    <!--</form>-->
-  <!--</div>-->
-  <!--<iframe ng-switch-default ng-src="{{chatroom.url}}"></iframe>-->
-<!--</div>-->
+<!--<div id="chatroom" ng-switch="chatroom.url" ng-controller="ChatController">
+  <div ng-switch-when="none" class="connect">
+    <p style="text-align: center; padding-top: 10px;">The #Bountysource IRC Chatroom is a place to communicate with other Bountysource users.</p>
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="nick">Nickname: </label>
+      </div>
+      <div class="form-group">
+        <input type="text" class="input-text form-control" id="nick" name="nick" ng-model="chatroom.nick" />
+      </div>
+      <button type="submit" class="btn btn-success" ng-click="chatroom.connect()">Connect</button>
+    </form>
+  </div>
+  <iframe ng-switch-default ng-src="{{chatroom.url}}"></iframe>
+</div>-->

@@ -1,13 +1,13 @@
 <ul class="breadcrumb">
-  <li><a href="/">Home</a><span class="divider">»</span></li>
-  <li><a href="/activity">Activity</a><span class="divider">»</span></li>
+  <li><a href="/">Home</a></li>
+  <li><a href="/activity">Activity</a></li>
   <li><a href="/activity/pledges">Pledges</a></li>
 </ul>
 
 <ng-include src="'pages/activity/tabs.html'"></ng-include>
 
 <div ng-show="(pledges | filter:'$show_survey').length > 0">
-  <div class="alert"><strong>Hey!</strong> The creator of one of the fundraisers that you backed needs information from you.</div>
+  <div class="alert alert-warning"><strong>Hey!</strong> The creator of one of the fundraisers that you backed needs information from you.</div>
 </div>
 
 <div ng-show="pledges.length <= 0" class="alert alert-info">
@@ -21,7 +21,7 @@
     <th>Amount</th>
     <th>Date</th>
     <th style="width: 50px;">Owner</th>
-    <th class="span2">Anonymous <a popover-title="Anonymous Pledges" popover="If you want to hide your identity on a pledge, make it anonymous. You can change this at anytime." popover-trigger="click"><i class="icon-question-sign"></i></a></th>
+    <th class="col-md-2">Anonymous <a popover-title="Anonymous Pledges" popover="If you want to hide your identity on a pledge, make it anonymous. You can change this at anytime." popover-trigger="click"><i class="glyphicon glyphicon-question-sign"></i></a></th>
   </tr>
   </thead>
 
@@ -33,27 +33,27 @@
       <div ng-show="pledge.$show_survey">
         <hr />
         <ng-form class="form-horizontal">
-          <div class="control-group">
+          <div class="form-group">
             <div class="controls">
-              <div class="row-fluid">
-                <div class="span1">
-                  <img class="thumbnail" style="width: 100%;" ng-src="{{pledge.fundraiser.person.image_url}}" />
+              <div class="row">
+                <div class="col-md-1">
+                  <img class="thumbnail" style="width: 100%;" ng-src="{{pledge.fundraiser.person.image_url}}">
                 </div>
-                <div class="span11">
+                <div class="col-md-11">
                   <p class="text-warning" style="white-space: pre-wrap;">"{{pledge.reward.fulfillment_details}}"</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="control-group">
+          <div class="form-group">
             <label class="control-label">Your Request</label>
             <div class="controls">
               <textarea style="width: 90%;" rows="4" ng-model="pledge.survey_response" placeholder="Your response"></textarea>
             </div>
           </div>
 
-          <div class="control-group">
+          <div class="form-group">
             <div class="controls">
               <button type="submit" class="btn btn-primary" ng-click="submit_survey(pledge)">Submit Response</button>
             </div>
@@ -77,24 +77,22 @@
         </div>
       </div>
     </td>
-
     <td ng-show="pledge.anonymous">
-      <button class="btn btn-small btn-block active" ng-click="toggle_anonymous(pledge)">
-        <i class="icon-eye-close"></i>
+      <button class="btn btn-sm btn-block active btn-default" ng-click="toggle_anonymous(pledge)">
+        <i class="glyphicon glyphicon-eye-close"></i>
         Anonymized
       </button>
     </td>
-
     <td ng-hide="pledge.anonymous">
-      <button class="btn btn-small btn-block btn-success" ng-click="toggle_anonymous(pledge)" ng-hide="pledge.owner_type == 'Team'">
-        <i class="icon-eye-open icon-white"></i>
+      <button class="btn btn-sm btn-block btn-success" ng-click="toggle_anonymous(pledge)" ng-hide="pledge.owner_type == 'Team'">
+        <i class="glyphicon glyphicon-eye-open icon-white"></i>
         Publicized
       </button>
-      <button class="btn btn-small btn-block btn-success disabled" ng-show="pledge.owner_type == 'Team'" tooltip="Team pledges cannot be anonymous">
-        <i class="icon-eye-open icon-white"></i>
+      <button class="btn btn-sm btn-block btn-success disabled" ng-show="pledge.owner_type == 'Team'" tooltip="Team pledges cannot be anonymous">
+        <i class="glyphicon glyphicon-eye-open icon-white"></i>
         Publicized
       </button>
     </td>
-  <tr>
+  </tr>
   </tbody>
 </table>

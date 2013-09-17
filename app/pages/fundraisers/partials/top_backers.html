@@ -16,7 +16,7 @@
         <div ng-show="pledge.person">
           <owner-profile-link model="pledge">{{pledge.person.display_name}}</owner-profile-link>
         </div>
-        <div ng-hide="pledge.person" class="muted">Anonymous</div>
+        <div ng-hide="pledge.person" class="text-muted">Anonymous</div>
         <div><b>{{ pledge.amount | dollars }}</b></div>
       </td>
     </tr>

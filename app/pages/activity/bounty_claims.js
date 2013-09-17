@@ -24,4 +24,3 @@ angular.module('app')
       return bounty_claims;
     });
   });
-

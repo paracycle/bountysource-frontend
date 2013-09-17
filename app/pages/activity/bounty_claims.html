@@ -1,6 +1,6 @@
 <ul class="breadcrumb">
-  <li><a href="/">Home</a><span class="divider">»</span></li>
-  <li><a href="/activity">Activity</a><span class="divider">»</span></li>
+  <li><a href="/">Home</a></li>
+  <li><a href="/activity">Activity</a></li>
   <li><a href="/activity/solutions">Bounty Claims</a></li>
 </ul>
 
@@ -11,7 +11,7 @@
 </div>
 
 <table class="table table-striped" ng-show="bounty_claims.length > 0">
-  <tr>
+  <tbody><tr>
     <th>Issue</th>
     <th>Status</th>
     <th>Date</th>
@@ -22,4 +22,4 @@
     <td ng-class="{ 'text-success': (claim.collected), 'text-error': (claim.disputed || claim.rejected), 'text-info': (!claim.disputed && !claim.collected && !claim.rejected) }">{{ claim.$status | title }}</td>
     <td>{{ claim.created_at | date }}</td>
   </tr>
-</table>
+</tbody></table>

@@ -1,6 +1,6 @@
 <ul class="breadcrumb">
-  <li><a href="/">Home</a><span class="divider">»</span></li>
-  <li><a href="/activity">Activity</a><span class="divider">»</span></li>
+  <li><a href="/">Home</a></li>
+  <li><a href="/activity">Activity</a></li>
   <li><a href="/activity/bounties">Bounties</a></li>
 </ul>
 
@@ -19,7 +19,7 @@
     <th style="width: 50px;">Owner</th>
     <th>
       Anonymous
-      <a popover-title="Anonymous Bounties" popover="If you want to hide your identity on a bounty, make it anonymous. You can change this at anytime." popover-trigger="click"><i class="icon-question-sign"></i></a>
+      <a popover-title="Anonymous Bounties" popover="If you want to hide your identity on a bounty, make it anonymous. You can change this at anytime." popover-trigger="click"><i class="glyphicon glyphicon-question-sign"></i></a>
     </th>
   </tr>
   </thead>
@@ -49,20 +49,19 @@
         </div>
       </div>
     </td>
-
     <td ng-show="bounty.anonymous && bounty.owner_type != 'Team'">
-      <button class="btn btn-small btn-block active" ng-click="toggle_anonymous(bounty)">
-        <i class="icon-eye-close"></i>
+      <button class="btn btn-sm btn-block active btn-default" ng-click="toggle_anonymous(bounty)">
+        <i class="glyphicon glyphicon-eye-close"></i>
         Anonymized
       </button>
     </td>
     <td ng-hide="bounty.anonymous">
-      <button class="btn btn-small btn-block btn-success" ng-click="toggle_anonymous(bounty)" ng-hide="bounty.owner_type == 'Team'">
-        <i class="icon-eye-open icon-white"></i>
+      <button class="btn btn-sm btn-block btn-success" ng-click="toggle_anonymous(bounty)" ng-hide="bounty.owner_type == 'Team'">
+        <i class="glyphicon glyphicon-eye-open icon-white"></i>
         Publicized
       </button>
-      <button class="btn btn-small btn-block btn-success disabled" ng-show="bounty.owner_type == 'Team'" tooltip="Team bounties cannot be anonymous">
-        <i class="icon-eye-open icon-white"></i>
+      <button class="btn btn-sm btn-block btn-success disabled" ng-show="bounty.owner_type == 'Team'" tooltip="Team bounties cannot be anonymous">
+        <i class="glyphicon glyphicon-eye-open icon-white"></i>
         Publicized
       </button>
     </td>

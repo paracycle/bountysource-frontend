@@ -47,4 +47,3 @@ angular.module('app')
       return issue;
     });
   });
-

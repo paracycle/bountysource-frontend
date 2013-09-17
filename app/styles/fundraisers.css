@@ -17,7 +17,12 @@ table.pledges-table tr td img.thumbnail {
   font-size: 30px;
   line-height: 40px;
 }
-
+.fundraiser-short-desc {
+  margin-bottom: 20px;
+  font-size: 21px;
+  font-weight: 200;
+  line-height: 30px;
+}
 .fundraiser-image {
   height: 200px;
   background-position: center center;

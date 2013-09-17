@@ -1,17 +1,47 @@
 html, body { height: 100%; margin: 0; padding: 0; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: 600;
+}
 a{ cursor: pointer; }
 
-/* bug in bootstrap... dropup is black but should be gray unless active */
-.dropup .caret { border-bottom-color: #777; }
+/* all images responsive by default */
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+/* remove left and right padding of container in desktop */
+@media (min-width: 768px) {
+  .container {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+.nav-tabs {
+  margin-bottom: 20px;
+}
 
 /* navbar */
 .navbar { border-top: 4px solid #129e5e; }
-.navbar .brand { margin: 6px 15px 3px 5px; padding: 0; }
-.navbar .brand strong { display: none }
-.navbar-search { position: relative; }
-.navbar-search .search-query { padding-left: 29px; }
-.navbar-search .icon-search { position: absolute; top: 7px; left: 11px; }
-@media (max-width: 979px) { .navbar-search .icon-search { top: 17px; left: 26px; } }
+.navbar > .container .navbar-brand { margin: 0; padding: 12px 0;}
+.navbar .navbar-brand strong { display: none }
+.navbar-form { position: relative; }
+.navbar-form .search-query { padding-left: 29px; width: 146% }
+.navbar-form .glyphicon-search { padding:4%; width: 24px; height: 100%; position: absolute; cursor: pointer; }
+.dropdown-menu img { display: inline; }
+
 /*@media (max-width: 979px) {*/
   /*.navbar-search .icon-search { top: 17px; left: 27px; }*/
   /*#main { border-top: 0px; }*/
@@ -20,57 +50,228 @@ a{ cursor: pointer; }
 /* footer */
 footer {
   position: relative;
-  margin-top: -206px; /* negative value of footer height */
+  margin-top: -200px; /* negative value of footer height */
   clear:both;
   padding-top: 30px;
   background-color: #333;
   height: 200px;
   border-top: 4px solid #129e5e;
 }
-footer ul { margin: 0; list-style: none; }
+footer ul { margin: 0; padding: 0; list-style: none; }
 footer a, footer { color: #bbb; }
-#main { border-bottom: 240px solid transparent; }
 
-/* space for navbar and footer */
+#main { border-bottom: 240px solid transparent; }
 #wrap {
   min-height: 100%;
 }
 #main {
-  overflow:auto;
   border-top: 45px solid transparent;
 }
 @media (max-width: 979px) {
-  #main { border-top: 0; }
   footer { height: auto; }
+  .navbar-form .search-query { width: 100% }
 }
-
-@media (max-width: 767px) {
-  .container { margin: 0 10px; }
-}
-
-.show-global-banner { display: block !important; }
-
 .navbar-fixed-top { margin: 0; }
 
 #main > .container { border-top: 25px solid transparent; }
 
+/* bootstrap 3 no longer has contexual classes for forms and badges, so we'll add manually */
+.form-group.warning .control-label,
+.form-group.warning .help-block,
+.form-group.warning .help-inline {
+  color: #c09853;
+}
 
-/* https://github.com/twitter/bootstrap/issues/3494 */
-.row-fluid ul.thumbnails li.span12 + li { margin-left : 0px; clear: left; }
-.row-fluid ul.thumbnails li.span6:nth-child(2n + 3) { margin-left : 0px; clear: left; }
-.row-fluid ul.thumbnails li.span4:nth-child(3n + 4) { margin-left : 0px; clear: left; }
-.row-fluid ul.thumbnails li.span3:nth-child(4n + 5) { margin-left : 0px; clear: left; }
-.row-fluid ul.thumbnails li.span2:nth-child(6n + 7) { margin-left : 0px; clear: left; }
+.form-group.warning .checkbox,
+.form-group.warning .radio,
+.form-group.warning input,
+.form-group.warning select,
+.form-group.warning textarea {
+  color: #c09853;
+}
 
+.form-group.warning input,
+.form-group.warning select,
+.form-group.warning textarea {
+  border-color: #c09853;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
 
-/* Fix for this bootstrap issue: https://github.com/twbs/bootstrap/pull/9167 */
-@media (max-width: 767px) {
-  .row-fluid .controls-row [class*="span"] + [class*="span"] {
-    margin-left: 0;
-    /* 
-    The margin-top is unrelated to the bootstrap issue.
-    I just think it looks nicer.
-    */
-    margin-top: 10px;
-  }
+.form-group.warning input:focus,
+.form-group.warning select:focus,
+.form-group.warning textarea:focus {
+  border-color: #a47e3c;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
+}
+
+.form-group.warning .input-prepend .add-on,
+.form-group.warning .input-append .add-on {
+  color: #c09853;
+  background-color: #fcf8e3;
+  border-color: #c09853;
+}
+
+.form-group.error .control-label,
+.form-group.error .help-block,
+.form-group.error .help-inline {
+  color: #b94a48;
+}
+
+.form-group.error .checkbox,
+.form-group.error .radio,
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+  color: #b94a48;
+}
+
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+  border-color: #b94a48;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.form-group.error input:focus,
+.form-group.error select:focus,
+.form-group.error textarea:focus {
+  border-color: #953b39;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+}
+
+.form-group.error .input-prepend .add-on,
+.form-group.error .input-append .add-on {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #b94a48;
+}
+
+.form-group.success .control-label,
+.form-group.success .help-block,
+.form-group.success .help-inline {
+  color: #468847;
+}
+
+.form-group.success .checkbox,
+.form-group.success .radio,
+.form-group.success input,
+.form-group.success select,
+.form-group.success textarea {
+  color: #468847;
+}
+
+.form-group.success input,
+.form-group.success select,
+.form-group.success textarea {
+  border-color: #468847;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.form-group.success input:focus,
+.form-group.success select:focus,
+.form-group.success textarea:focus {
+  border-color: #356635;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
+}
+
+.form-group.success .input-prepend .add-on,
+.form-group.success .input-append .add-on {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #468847;
+}
+
+.form-group.info .control-label,
+.form-group.info .help-block,
+.form-group.info .help-inline {
+  color: #3a87ad;
+}
+
+.form-group.info .checkbox,
+.form-group.info .radio,
+.form-group.info input,
+.form-group.info select,
+.form-group.info textarea {
+  color: #3a87ad;
+}
+
+.form-group.info input,
+.form-group.info select,
+.form-group.info textarea {
+  border-color: #3a87ad;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.form-group.info input:focus,
+.form-group.info select:focus,
+.form-group.info textarea:focus {
+  border-color: #2d6987;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7ab5d3;
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7ab5d3;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7ab5d3;
+}
+
+.form-group.info .input-prepend .add-on,
+.form-group.info .input-append .add-on {
+  color: #3a87ad;
+  background-color: #d9edf7;
+  border-color: #3a87ad;
+}
+
+.badge-important {
+  background-color: #b94a48;
+}
+
+.badge-important[href] {
+  background-color: #953b39;
+}
+
+.badge-warning {
+  background-color: #f89406;
+}
+
+.badge-warning[href] {
+  background-color: #c67605;
+}
+
+.badge-success {
+  background-color: #468847;
+}
+
+.badge-success[href] {
+  background-color: #356635;
+}
+
+.badge-info {
+  background-color: #3a87ad;
+}
+
+.badge-info[href] {
+  background-color: #2d6987;
+}
+
+.badge-inverse {
+  background-color: #333333;
+}
+
+.badge-inverse[href] {
+  background-color: #1a1a1a;
+}
+
+.icon-white, .icon-white a {
+  color: #ffffff;
 }

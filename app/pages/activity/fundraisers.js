@@ -14,4 +14,3 @@ angular.module('app')
 
     $scope.fundraisers = $api.fundraiser_activity();
   });
-

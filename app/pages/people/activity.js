@@ -17,4 +17,3 @@ angular.module('app')
 
     $scope.timeline = $api.person_activity($routeParams.id);
   });
-

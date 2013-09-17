@@ -1,8 +1,8 @@
-<div class="row-fluid">
-  <div class="span1">
-    <a ng-href="/trackers/{{issue.tracker.slug}}"><img ng-src="{{issue.tracker.image_url}}" class="thumbnail" /></a>
+<div class="row">
+  <div class="col-md-1">
+    <a ng-href="/trackers/{{issue.tracker.slug}}"><img ng-src="{{issue.tracker.image_url}}" class="thumbnail"></a>
   </div>
-  <div class="span11">
+  <div class="col-md-11">
     <h4 style="margin-top: 0;">{{ issue.title || 'Loading...' }}</h4>
     <issue-status-label issue="issue"></issue-status-label>
   </div>
