@@ -198,11 +198,6 @@ module.exports = function (grunt) {
           cwd: 'app/images',
           src: '*.{png,jpg,jpeg,gif}',
           dest: 'dist/assets'
-        },{
-          expand: true,
-          cwd: 'app/components/bootstrap/docs/assets/img',
-          src: 'glyph*.png',
-          dest: 'dist/assets'
         }]
       }
     },
