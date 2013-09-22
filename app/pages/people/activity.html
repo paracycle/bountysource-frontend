@@ -4,13 +4,13 @@
   <li><a href="/people/{{person.slug}}">{{ person.display_name ||'Loading...' }}</a></li>
 </ul>
 
-<div class="row-fluid" ng-show="person">
+<div class="row" ng-show="person">
   <div class="col-md-3">
     <ng-include src="'pages/people/partials/infobox.html'"></ng-include>
   </div>
 
   <div class="col-md-9">
-    <ng-include src="'pages/people/partials/tabs.html'"></ng-include>
+    <ng-include src="'pages/people/partials/header.html'"></ng-include>
     <ng-include src="'pages/people/partials/activity.html'"></ng-include>
   </div>
 </div>

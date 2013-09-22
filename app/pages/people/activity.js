@@ -12,8 +12,11 @@ angular.module('app')
     $scope.person = $api.person_get($routeParams.id);
 
     $scope.person.then(function(person){
+      person.display_name = person.display_name.replace(/\(unknown\)/g, '').trim();
       $pageTitle.set(person.display_name, 'Profile');
     });
 
     $scope.timeline = $api.person_activity($routeParams.id);
+
+    $scope.teams = $api.person_teams_get($routeParams.id);
   });

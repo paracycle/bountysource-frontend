@@ -154,7 +154,14 @@ angular.module('api.bountysource',[]).
     };
 
     this.fundraiser_pledges_get = function(id) {
-      return this.call("/user/fundraisers/"+id+"/pledges");
+      return this.call("/user/fundraisers/"+id+"/pledges").then(function(pledges) {
+        for (var i=0; i<pledges.length; i++) {
+          // TODO actually use owner, not this person legacy hack
+          pledges[i].person = pledges[i].owner;
+        }
+
+        return pledges;
+      });
     };
 
     this.fundraiser_publish = function(id, callback) {
@@ -290,6 +297,11 @@ angular.module('api.bountysource',[]).
           }
         }
 
+        // TODO legacy hack, turn owner into person
+        for (i=0; i<issue.bounties.length; i++) {
+          issue.bounties[i].person = issue.bounties[i].owner;
+        }
+
         return issue;
       });
     };
@@ -420,6 +432,10 @@ angular.module('api.bountysource',[]).
 
     this.team_invites_get = function(team_id) {
       return this.call("/teams/"+team_id+"/invites", "GET");
+    };
+
+    this.person_teams_get = function(id) {
+      return this.call("/people/" + id + "/teams");
     };
 
     this.email_registered = function(email) {
