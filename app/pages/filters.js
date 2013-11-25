@@ -38,10 +38,16 @@ angular.module('app').
     return function(s, size, replacement) {
       size = size || 50;
       replacement = replacement || "...";
-      if (!s || s.length <= (size + replacement.length)) {
+      if (!s || s.length <= size) {
         return s;
       }
       return s.slice(0,size+replacement.length) + replacement;
+    };
+  }).filter('clean_url', function() {
+    return function(s) {
+      var new_url = s.replace(/http:\/\/|https:\/\//, '');
+      new_url = new_url.replace(/\/$/, '');
+      return new_url;
     };
   }).filter('from_snake_case', function() {
     // Convert snakecase to words
@@ -130,7 +136,7 @@ angular.module('app').
     };
   }).filter('pluck', function() {
     return function(input, field) {
-      // console.log(arguments);
+      console.log(arguments);
       var retval = [];
       for (var i=0; i < input.length; i++) {
         retval.push(input[i][field]);
@@ -146,11 +152,5 @@ angular.module('app').
         }
       }
       return retval;
-    };
-  }).filter('hex', function() {
-    return function(input) {
-      if (input) {
-        return input.replace(/[^0-9a-f]/i, "");
-      }
     };
   });

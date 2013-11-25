@@ -37,6 +37,9 @@ table.pledges-table tr td img.thumbnail {
   line-height: 40px;
 }
 
+.fundraiser-buttons .col-xs-4 { padding: 2px; }
+.fundraiser-buttons .col-xs-8 { padding: 2px; }
+
 table.top-backers-table td { border-top: 0; }
 
 table.update_table th:nth-child(2) {

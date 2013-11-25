@@ -6,21 +6,19 @@ angular.module('app')
       if (tab === 'all' && /^\/tools$/i.test($location.path())) { return 'active'; }
       else if (tab === 'installed' && /^\/tools\/installed$/i.test($location.path())) { return 'active'; }
     };
-    $scope.github_associated = $scope.current_person && $scope.current_person.github_account;
-    if (!$scope.github_associated) {
-      $scope.github_associated = false;
-    }
+
     $scope.github_auth = function(redirect_url) {
       $api.set_post_auth_url(redirect_url || $location.path());
       $window.location = $api.signin_url_for('github', { scope: ["public_repo"] });
     };
+
     $scope.loading_trackers = true;
     $scope.plugin_loading = false;
 
     $scope.new_plugin = {
-      modify_title: true,
-      modify_body: true,
-      add_label: true,
+      modify_title: false,
+      modify_body: false,
+      add_label: false,
       label_name: "bounty",
       label_color: "#129e5e"
     };
@@ -33,61 +31,31 @@ angular.module('app')
       $scope.current_tracker = tracker;
       $scope.current_plugin = $scope.get_plugin(tracker);
       $scope.plugin_alert = {};
-      $scope.$watch('plugin_changed(current_plugin)', function() {
-        if (tracker.$plugin_installed && $scope.plugin_changed($scope.current_plugin)) {
-          if (!$scope.plugin_alert.initial_message) {
-            $scope.plugin_alert = { text: 'There are unsaved changes.', type: 'warning'};
-          } else {
-            $scope.plugin_alert.initial_message = false;
-          }
-        }
-      });
-
     };
 
     $scope.collapse_tracker = function() {
       $scope.current_tracker = null;
       $scope.current_plugin = null;
-      $scope.$watch('current_plugin', function() {
-        $scope.plugin_alert = {};
-      });
     };
 
     $scope.all_trackers = $api.trackers_get().then(function(trackers) {
-      $scope.trackers_count = trackers.length;
       $scope.loading_trackers = false;
 
-      var owner_map = [], owner;
+      var owner_map = {}, owner;
       for (var i=0; i<trackers.length; i++) {
         owner = trackers[i].full_name.split('/')[0];
         owner_map[owner] = owner_map[owner] || [];
-        trackers[i].owner = owner;
         owner_map[owner].push(trackers[i]);
       }
-      // turn object into array so that it can be sorted
-      var owner_trackers = [];
-      for (var k in owner_map) {
-        owner_trackers.push([k, owner_map[k]]);
-      }
 
-      // order by owner name FIRST, then by number of projects
-      owner_trackers.sort(function(a, b) {
-        if ($scope.current_person && $scope.current_person.github_account && a[0] === $scope.current_person.github_account.login) {
-          return -1;
-        } else if ($scope.current_person && $scope.current_person.github_account && b[0] === $scope.current_person.github_account.login) {
-          return 1;
-        } else {
-          return a[1].length === b[1].length ? 0 : (a[1].length < b[1].length ? 1 : -1);
-        }
-      });
+      $scope.open_by_default = Object.keys(owner_map).length === 1;
 
-      return owner_trackers;
+      return owner_map;
     });
 
     $scope.plugins = $api.tracker_plugins_get().then(function(plugins) {
       // Get the plugin for a tracker, if installed.
       // if not installed, return model for a new plugin
-      $scope.tracker_plugins_count = plugins.length;
       $scope.get_plugin = function(tracker) {
         if (tracker) {
           for (var i=0; i<plugins.length; i++) {
@@ -158,7 +126,6 @@ angular.module('app')
                 break;
               }
             }
-            $scope.plugin_alert = { text: 'Changes successfully saved.', type: 'success', initial_message: true};
           }
         });
       };
@@ -180,14 +147,13 @@ angular.module('app')
                 $scope.current_tracker.$plugin_installed = true;
                 $scope.expand_tracker($scope.current_tracker);
                 plugins.push(plugin);
-                $scope.plugin_alert = { text: 'Plugin successfully installed.', type: 'success', initial_message: true};
               }
             });
           }
         }
       };
+
       return plugins;
     });
   });
-
 

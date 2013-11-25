@@ -15,10 +15,24 @@ table#solutions-table tr td img.thumbnail {
   height: 130px;
 }
 
-.bounty-buttons .btn { margin-top: 0; }
-.bounty-buttons .btn-sm { min-width: 72px; max-width: 73px; }
-.bounty-buttons .controls { margin-top: 10px; }
-.bounty-buttons .controls:first-of-type { margin-top: 0; }
+li.task-list-item {
+  list-style: square outside url(/images/checkbox.png);
+}
+
+li.task-list-item-checked {
+  list-style: square outside url(/images/checkbox_checked.png);
+}
+
+li.task-list-item br {
+  display: none;
+}
+
+li.task-list-item-checked br {
+  display: none;
+}
+
+.bounty-buttons .col-xs-4 { padding: 2px; }
+.bounty-buttons .col-xs-8 { padding: 2px; }
 
 .no-stripe td { border-top: 0; background-color: transparent !important; }
 

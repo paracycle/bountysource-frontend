@@ -19,6 +19,10 @@
   <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css">
   <!-- endbuild -->
 
+  <!-- build:css assets/colorpicker.css -->
+  <link rel="stylesheet" href="components/angular-bootstrap-colorpicker/css/colorpicker.css">
+  <!-- endbuild -->
+
   <!-- build:css assets/app.css -->
   <link rel="stylesheet" href="styles/chatroom.css">
   <link rel="stylesheet" href="styles/teams.css">
@@ -40,7 +44,7 @@
 <div id="wrap">
   <div id="main" class="clear-top">
     <div ng:include src="'pages/layout/navbar.html'"></div>
-    <div style="display: none" class="container" ng-show="no_container == false">
+    <div style="display: none" class="container" ng-controller="AlertNotificationBar" ng-show="show_alert_notification_bar">
       <div class="alert alert-success" style="text-align: center; margin: 0">
         Want to earn some cash? Bountysource's Bootstrap+AngularJS open-source frontend has <a href="/trackers/47-bountysource-frontend">$5,385 in open bounties</a>.
       </div>
@@ -67,7 +71,6 @@
 <script src="components/momentjs/moment.js"></script>
 
 <script src="components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
-<link rel="stylesheet" href="components/angular-bootstrap-colorpicker/css/colorpicker.css">
 <!-- endbuild -->
 <script>window.Moment = window.moment;</script>
 
@@ -103,6 +106,8 @@
     <script src="pages/fundraisers/controllers/index.js" type="text/javascript"></script>
     <script src="pages/fundraisers/controllers/nav_tabs.js" type="text/javascript"></script>
     <script src="pages/fundraisers/controllers/pledges.js" type="text/javascript"></script>
+    <script src="pages/fundraisers/controllers/receipts.js" type="text/javascript"></script>
+    <script src="pages/fundraisers/controllers/recent_receipt.js" type="text/javascript"></script>
     <script src="pages/fundraisers/controllers/rewards.js" type="text/javascript"></script>
     <script src="pages/fundraisers/controllers/show.js" type="text/javascript"></script>
     <script src="pages/fundraisers/controllers/updates.js" type="text/javascript"></script>
@@ -116,6 +121,8 @@
     <script src="pages/issues/controllers/bounty_claims.js" type="text/javascript"></script>
     <script src="pages/issues/controllers/nav_tabs.js" type="text/javascript"></script>
     <script src="pages/issues/controllers/new.js" type="text/javascript"></script>
+    <script src="pages/issues/controllers/receipts.js" type="text/javascript"></script>
+    <script src="pages/issues/controllers/recent_receipts.js" type="text/javascript"></script>
     <script src="pages/issues/controllers/show.js" type="text/javascript"></script>
     <script src="pages/issues/controllers/solutions.js" type="text/javascript"></script>
     <script src="pages/issues/directives.js" type="text/javascript"></script>
